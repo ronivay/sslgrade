@@ -102,7 +102,6 @@ function TestResultPrint {
                 echo "Grade: $GRADE"
                 echo "Warnings: "$WARNINGS""
 		echo
-#		echo "$CERTCHAIN"
 		echo -n "Issues in certficiate chain: "
 		if [[ $CERTCHAIN == "0" ]]; then
 			echo "none"
@@ -117,7 +116,6 @@ function TestResultPrint {
 		elif [[ $CERTCHAIN == "5" ]]; then
 			echo "the certificates form a chain, but we could not validate it"
 		fi
-#		echo "Issues in certificate chain: "$CERTCHAIN""
 		echo "Supported protocols: "$PROTOCOLS""
 		
                 echo
