@@ -118,7 +118,7 @@ function TestResultPrint {
 		elif [[ $CERTCHAIN == "5" ]]; then
 			echo "the certificates form a chain, but we could not validate it"
 		fi
-		echo "Supported protocols: "$PROTOCOLS""
+		echo "Supported TLS/SSL protocols: "$PROTOCOLS""
 		
                 echo
                 echo "See full report at https://www.ssllabs.com/ssltest/analyze.html?d=$DOMAIN&fromCache=on"
