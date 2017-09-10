@@ -32,6 +32,7 @@ elif [[ "$STATUS" == "Ready" ]]; then
 	echo "There's existing fresh result"
 	echo "Start new test anyway?"
 	read -p "[y/N] " answer
+	answer=${answer:-n}
 		case $answer in
 		
 		y)
