@@ -72,6 +72,8 @@ function WaitForTest {
 	if [[ $(echo "$STATUS" | jq ".status") =~ "ERROR" ]] || [[ $(echo "$STATUS" | jq ".errors") != "null" ]]; then
 		echo 
 		echo "Error initializing test"
+		echo "API reply:"
+		echo "$STATUS"
 		exit 1
 	fi
 	
