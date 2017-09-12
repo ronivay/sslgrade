@@ -81,7 +81,7 @@ function WaitForTest {
 	echo "Waiting for test to finish"
 	while [[ "$PROGRESS" != "Ready" ]]; do
 		sleep 3
-		local local STATUS=$(curl -s "https://api.dev.ssllabs.com/api/v2/analyze?host=$DOMAIN&publish=off&analyze")
+		local STATUS=$(curl -s "https://api.dev.ssllabs.com/api/v2/analyze?host=$DOMAIN&publish=off&analyze")
 		local PERCENTAGE=$(echo "$STATUS" | jq ".endpoints[].progress" 2>/dev/null | sed 's/\"//g' 2>/dev/null | sed 's/-1/0/' 2>/dev/null)
 		local TEST=$(echo "$STATUS" | jq ".endpoints[].statusDetailsMessage" 2>/dev/null | sed 's/\"//g' 2>/dev/null)
 		echo -ne "\r$PERCENTAGE%"
