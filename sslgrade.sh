@@ -59,6 +59,7 @@ function StartTest {
 	echo 
 	echo "Calling API to start test"
 	echo "API reply:"
+	sleep 3
 	curl -s "https://api.dev.ssllabs.com/api/v2/analyze?host=$DOMAIN&publish=off&analyze&startNew=on&ignoreMismatch=on"
 	echo
 }
@@ -105,18 +106,18 @@ function TestResultPrint {
                 echo "Grade: $GRADE"
                 echo "Warnings: "$WARNINGS""
 		echo
-		echo -n "Issues in certficiate chain: "
+		echo -n "Issues in certificate chain: "
 		if [[ $CERTCHAIN == "0" ]]; then
 			echo "none"
-		elif [[ $CERTCHAIN == "1" ]]; then
-			echo "incomplete chain"
 		elif [[ $CERTCHAIN == "2" ]]; then
-			echo "chain contains unrelated or duplicate certificates"
-		elif [[ $CERTCHAIN == "3" ]]; then
-			echo "the certificates form a chain (trusted or not), but the order is incorrect"
+			echo "incomplete chain"
 		elif [[ $CERTCHAIN == "4" ]]; then
+			echo "chain contains unrelated or duplicate certificates"
+		elif [[ $CERTCHAIN == "8" ]]; then
+			echo "the certificates form a chain (trusted or not), but the order is incorrect"
+		elif [[ $CERTCHAIN == "16" ]]; then
 			echo "contains a self-signed root certificate"
-		elif [[ $CERTCHAIN == "5" ]]; then
+		elif [[ $CERTCHAIN == "32" ]]; then
 			echo "the certificates form a chain, but we could not validate it"
 		fi
 		echo "Supported TLS/SSL protocols: "$PROTOCOLS""
